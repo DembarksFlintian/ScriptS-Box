@@ -53,18 +53,19 @@ local function CreateGUI()
 	local Run_3 = Instance.new("TextButton")
 	local Title_4 = Instance.new("TextLabel")
 	local Stop_2 = Instance.new("TextButton")
-	local FloorSink = Instance.new("Frame")
+	local Freecam = Instance.new("Frame")
 	local Run_4 = Instance.new("TextButton")
 	local Title_5 = Instance.new("TextLabel")
 	local Stop_3 = Instance.new("TextButton")
-	local Freecam = Instance.new("Frame")
+	local Platform = Instance.new("Frame")
 	local Run_5 = Instance.new("TextButton")
 	local Title_6 = Instance.new("TextLabel")
 	local Stop_4 = Instance.new("TextButton")
-	local Platform = Instance.new("Frame")
+	local Emote = Instance.new("Frame")
 	local Run_6 = Instance.new("TextButton")
 	local Title_7 = Instance.new("TextLabel")
 	local Stop_5 = Instance.new("TextButton")
+	local ID = Instance.new("TextBox")
 
 	--Properties:
 
@@ -290,16 +291,16 @@ local function CreateGUI()
 	Stop_2.TextSize = 14.000
 	Stop_2.TextWrapped = true
 
-	FloorSink.Name = "FloorSink"
-	FloorSink.Parent = ToolsFrame
-	FloorSink.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	FloorSink.BackgroundTransparency = 0.960
-	FloorSink.BorderColor3 = Color3.fromRGB(0, 0, 0)
-	FloorSink.BorderSizePixel = 0
-	FloorSink.Size = UDim2.new(0.992207766, 0, 0.0872234479, 0)
+	Freecam.Name = "Freecam"
+	Freecam.Parent = ToolsFrame
+	Freecam.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	Freecam.BackgroundTransparency = 0.960
+	Freecam.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	Freecam.BorderSizePixel = 0
+	Freecam.Size = UDim2.new(0.992207766, 0, 0.0872234479, 0)
 
 	Run_4.Name = "Run"
-	Run_4.Parent = FloorSink
+	Run_4.Parent = Freecam
 	Run_4.BackgroundColor3 = Color3.fromRGB(132, 128, 255)
 	Run_4.BorderColor3 = Color3.fromRGB(77, 39, 202)
 	Run_4.BorderSizePixel = 3
@@ -313,7 +314,7 @@ local function CreateGUI()
 	Run_4.TextWrapped = true
 
 	Title_5.Name = "Title"
-	Title_5.Parent = FloorSink
+	Title_5.Parent = Freecam
 	Title_5.BackgroundColor3 = Color3.fromRGB(132, 128, 255)
 	Title_5.BackgroundTransparency = 1.000
 	Title_5.BorderColor3 = Color3.fromRGB(0, 0, 0)
@@ -321,14 +322,14 @@ local function CreateGUI()
 	Title_5.Position = UDim2.new(0.0153451432, 0, 0.0769252777, 0)
 	Title_5.Size = UDim2.new(0.425704777, 0, 0.882164001, 0)
 	Title_5.Font = Enum.Font.SourceSansBold
-	Title_5.Text = "FLOOR SINK"
+	Title_5.Text = "FREECAM"
 	Title_5.TextColor3 = Color3.fromRGB(72, 0, 255)
 	Title_5.TextScaled = true
 	Title_5.TextSize = 14.000
 	Title_5.TextWrapped = true
 
 	Stop_3.Name = "Stop"
-	Stop_3.Parent = FloorSink
+	Stop_3.Parent = Freecam
 	Stop_3.BackgroundColor3 = Color3.fromRGB(132, 128, 255)
 	Stop_3.BorderColor3 = Color3.fromRGB(202, 0, 0)
 	Stop_3.BorderSizePixel = 3
@@ -341,16 +342,16 @@ local function CreateGUI()
 	Stop_3.TextSize = 14.000
 	Stop_3.TextWrapped = true
 
-	Freecam.Name = "Freecam"
-	Freecam.Parent = ToolsFrame
-	Freecam.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	Freecam.BackgroundTransparency = 0.960
-	Freecam.BorderColor3 = Color3.fromRGB(0, 0, 0)
-	Freecam.BorderSizePixel = 0
-	Freecam.Size = UDim2.new(0.992207766, 0, 0.0872234479, 0)
+	Platform.Name = "Platform"
+	Platform.Parent = ToolsFrame
+	Platform.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	Platform.BackgroundTransparency = 0.960
+	Platform.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	Platform.BorderSizePixel = 0
+	Platform.Size = UDim2.new(0.992207766, 0, 0.0872234479, 0)
 
 	Run_5.Name = "Run"
-	Run_5.Parent = Freecam
+	Run_5.Parent = Platform
 	Run_5.BackgroundColor3 = Color3.fromRGB(132, 128, 255)
 	Run_5.BorderColor3 = Color3.fromRGB(77, 39, 202)
 	Run_5.BorderSizePixel = 3
@@ -364,7 +365,7 @@ local function CreateGUI()
 	Run_5.TextWrapped = true
 
 	Title_6.Name = "Title"
-	Title_6.Parent = Freecam
+	Title_6.Parent = Platform
 	Title_6.BackgroundColor3 = Color3.fromRGB(132, 128, 255)
 	Title_6.BackgroundTransparency = 1.000
 	Title_6.BorderColor3 = Color3.fromRGB(0, 0, 0)
@@ -372,14 +373,14 @@ local function CreateGUI()
 	Title_6.Position = UDim2.new(0.0153451432, 0, 0.0769252777, 0)
 	Title_6.Size = UDim2.new(0.425704777, 0, 0.882164001, 0)
 	Title_6.Font = Enum.Font.SourceSansBold
-	Title_6.Text = "FREECAM"
+	Title_6.Text = "PLATFORM"
 	Title_6.TextColor3 = Color3.fromRGB(72, 0, 255)
 	Title_6.TextScaled = true
 	Title_6.TextSize = 14.000
 	Title_6.TextWrapped = true
 
 	Stop_4.Name = "Stop"
-	Stop_4.Parent = Freecam
+	Stop_4.Parent = Platform
 	Stop_4.BackgroundColor3 = Color3.fromRGB(132, 128, 255)
 	Stop_4.BorderColor3 = Color3.fromRGB(202, 0, 0)
 	Stop_4.BorderSizePixel = 3
@@ -392,21 +393,21 @@ local function CreateGUI()
 	Stop_4.TextSize = 14.000
 	Stop_4.TextWrapped = true
 
-	Platform.Name = "Platform"
-	Platform.Parent = ToolsFrame
-	Platform.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	Platform.BackgroundTransparency = 0.960
-	Platform.BorderColor3 = Color3.fromRGB(0, 0, 0)
-	Platform.BorderSizePixel = 0
-	Platform.Size = UDim2.new(0.992207766, 0, 0.0872234479, 0)
+	Emote.Name = "Emote"
+	Emote.Parent = ToolsFrame
+	Emote.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	Emote.BackgroundTransparency = 0.960
+	Emote.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	Emote.BorderSizePixel = 0
+	Emote.Size = UDim2.new(0.992207766, 0, 0.0872234479, 0)
 
 	Run_6.Name = "Run"
-	Run_6.Parent = Platform
+	Run_6.Parent = Emote
 	Run_6.BackgroundColor3 = Color3.fromRGB(132, 128, 255)
 	Run_6.BorderColor3 = Color3.fromRGB(77, 39, 202)
 	Run_6.BorderSizePixel = 3
-	Run_6.Position = UDim2.new(0.621483982, 0, 0.324867845, 0)
-	Run_6.Size = UDim2.new(0.135549247, 0, 0.424745411, 0)
+	Run_6.Position = UDim2.new(0.63199079, 0, 0.324867427, 0)
+	Run_6.Size = UDim2.new(0.150618628, 0, 0.424745381, 0)
 	Run_6.Font = Enum.Font.Arcade
 	Run_6.Text = "RUN"
 	Run_6.TextColor3 = Color3.fromRGB(43, 0, 255)
@@ -415,27 +416,27 @@ local function CreateGUI()
 	Run_6.TextWrapped = true
 
 	Title_7.Name = "Title"
-	Title_7.Parent = Platform
+	Title_7.Parent = Emote
 	Title_7.BackgroundColor3 = Color3.fromRGB(132, 128, 255)
 	Title_7.BackgroundTransparency = 1.000
 	Title_7.BorderColor3 = Color3.fromRGB(0, 0, 0)
 	Title_7.BorderSizePixel = 0
 	Title_7.Position = UDim2.new(0.0153451432, 0, 0.0769252777, 0)
-	Title_7.Size = UDim2.new(0.425704777, 0, 0.882164001, 0)
+	Title_7.Size = UDim2.new(0.35219121, 0, 0.882164001, 0)
 	Title_7.Font = Enum.Font.SourceSansBold
-	Title_7.Text = "PLATFORM"
+	Title_7.Text = "EMOTE"
 	Title_7.TextColor3 = Color3.fromRGB(72, 0, 255)
 	Title_7.TextScaled = true
 	Title_7.TextSize = 14.000
 	Title_7.TextWrapped = true
 
 	Stop_5.Name = "Stop"
-	Stop_5.Parent = Platform
+	Stop_5.Parent = Emote
 	Stop_5.BackgroundColor3 = Color3.fromRGB(132, 128, 255)
 	Stop_5.BorderColor3 = Color3.fromRGB(202, 0, 0)
 	Stop_5.BorderSizePixel = 3
-	Stop_5.Position = UDim2.new(0.782609344, 0, 0.324867845, 0)
-	Stop_5.Size = UDim2.new(0.185666472, 0, 0.424745411, 0)
+	Stop_5.Position = UDim2.new(0.808876097, 0, 0.324867427, 0)
+	Stop_5.Size = UDim2.new(0.159399718, 0, 0.424745411, 0)
 	Stop_5.Font = Enum.Font.Arcade
 	Stop_5.Text = "STOP"
 	Stop_5.TextColor3 = Color3.fromRGB(255, 0, 0)
@@ -443,9 +444,24 @@ local function CreateGUI()
 	Stop_5.TextSize = 14.000
 	Stop_5.TextWrapped = true
 
+	ID.Name = "ID"
+	ID.Parent = Emote
+	ID.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	ID.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	ID.BorderSizePixel = 0
+	ID.Position = UDim2.new(0.404309809, 0, 0.268151522, 0)
+	ID.Size = UDim2.new(0.188701391, 0, 0.520899057, 0)
+	ID.Font = Enum.Font.SourceSans
+	ID.PlaceholderText = "ID..."
+	ID.Text = ""
+	ID.TextColor3 = Color3.fromRGB(0, 0, 0)
+	ID.TextScaled = true
+	ID.TextSize = 14.000
+	ID.TextWrapped = true
+
 	-- Scripts:
 
-	local function MOLPZ_fake_script() -- Frame.Dragify 
+	local function BSMJUMP_fake_script() -- Frame.Dragify 
 		local script = Instance.new('LocalScript', Frame)
 
 		local userInputService : UserInputService = game:GetService("UserInputService") -- UserInputService
@@ -494,8 +510,7 @@ local function CreateGUI()
 
 
 	end
-	coroutine.wrap(MOLPZ_fake_script)()
-
+	coroutine.wrap(BSMJUMP_fake_script)()
 
 
 	return FunnyTools
@@ -897,8 +912,6 @@ local function Setup()
 			SetUpPlayerDetection(v)
 		end
 	end
-
-	print("newer!")
 end
 
 wait(0.5)
@@ -949,6 +962,27 @@ local function CreatePlatform()
 	NewPlatform.CFrame = Player.Character.HumanoidRootPart.CFrame - Vector3.new(0,6,0)
 	NewPlatform.Parent = workspace
 	Platform = NewPlatform
+end
+
+local function PlayEmote(ID)
+	local Char = Player.Character
+	local Hum = Char.Humanoid
+	Char.Animate.Disabled = false
+	local Tracks = Hum:GetPlayingAnimationTracks()
+	for i,v in pairs(Tracks) do
+		v:Stop()
+	end
+	Char.Animate.Disabled = true
+	local Anim = Instance.new("Animation")
+	Anim.AnimationId = "rbxassetid://" .. ID
+	local LoadedAnim = Hum:LoadAnimation(Anim)
+	LoadedAnim:Play()
+	LoadedAnim.Stopped:Connect(function()
+		Char.Animate.Disabled = false
+		for i, track in pairs (Tracks) do
+			track:Stop()
+		end
+	end)
 end
 
 local function RefreshPlayerSpawn()
@@ -1132,12 +1166,12 @@ UIFrame.Click2Teleport.Stop.MouseButton1Click:Connect(function()
 	Teleport = false
 end)
 
-UIFrame.FloorSink.Run.MouseButton1Click:Connect(function()
-	SinkThroughFloor()
-end)
-UIFrame.FloorSink.Stop.MouseButton1Click:Connect(function()
-	StopSinkingFunction()
-end)
+--UIFrame.FloorSink.Run.MouseButton1Click:Connect(function()
+--	SinkThroughFloor()
+--end)
+--UIFrame.FloorSink.Stop.MouseButton1Click:Connect(function()
+--	StopSinkingFunction()
+--end)
 
 UIFrame.Freecam.Run.MouseButton1Click:Connect(function()
 	ToggleFreecam(true)
@@ -1149,10 +1183,24 @@ end)
 UIFrame.Platform.Run.MouseButton1Click:Connect(function()
 	CreatePlatform()
 end)
-
 UIFrame.Platform.Stop.MouseButton1Click:Connect(function()
 	if Platform then
 		Platform:Destroy()
+	end
+end)
+
+UIFrame.Emote.Run.MouseButton1Click:Connect(function()
+	local Amt = UIFrame.Emote.ID
+	if not tonumber(Amt.Text) then
+		return
+	end
+	PlayEmote(Amt)
+end)
+UIFrame.Emote.Stop.MouseButton1Click:Connect(function()
+	Player.Character.Animate.Disabled = false
+	local Anim = Player.Character.Humanoid:GetPlayingAnimationTracks()
+	for i,v in pairs(Anim) do
+		v:Stop()
 	end
 end)
 
