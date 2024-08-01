@@ -1018,7 +1018,7 @@ local function SinkThroughFloor()
 	local startTime = tick()
 	local sinkDistance = 10
 	local initialCFrame = Character.HumanoidRootPart.CFrame
-	
+	print("WE SINK!")
 	coroutine.resume(coroutine.create(function()
 		while tick() - startTime < sinkTime and not StopSinking do
 			local elapsed = tick() - startTime
