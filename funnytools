@@ -24,6 +24,7 @@ local Phase = false
 local PhaseObjects = {}
 
 local Staircases
+local Platform
 
 --Setup
 
@@ -60,6 +61,10 @@ local function CreateGUI()
 	local Run_5 = Instance.new("TextButton")
 	local Title_6 = Instance.new("TextLabel")
 	local Stop_4 = Instance.new("TextButton")
+	local Platform = Instance.new("Frame")
+	local Run_6 = Instance.new("TextButton")
+	local Title_7 = Instance.new("TextLabel")
+	local Stop_5 = Instance.new("TextButton")
 
 	--Properties:
 
@@ -387,9 +392,60 @@ local function CreateGUI()
 	Stop_4.TextSize = 14.000
 	Stop_4.TextWrapped = true
 
+	Platform.Name = "Platform"
+	Platform.Parent = ToolsFrame
+	Platform.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	Platform.BackgroundTransparency = 0.960
+	Platform.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	Platform.BorderSizePixel = 0
+	Platform.Size = UDim2.new(0.992207766, 0, 0.0872234479, 0)
+
+	Run_6.Name = "Run"
+	Run_6.Parent = Platform
+	Run_6.BackgroundColor3 = Color3.fromRGB(132, 128, 255)
+	Run_6.BorderColor3 = Color3.fromRGB(77, 39, 202)
+	Run_6.BorderSizePixel = 3
+	Run_6.Position = UDim2.new(0.621483982, 0, 0.324867845, 0)
+	Run_6.Size = UDim2.new(0.135549247, 0, 0.424745411, 0)
+	Run_6.Font = Enum.Font.Arcade
+	Run_6.Text = "RUN"
+	Run_6.TextColor3 = Color3.fromRGB(43, 0, 255)
+	Run_6.TextScaled = true
+	Run_6.TextSize = 14.000
+	Run_6.TextWrapped = true
+
+	Title_7.Name = "Title"
+	Title_7.Parent = Platform
+	Title_7.BackgroundColor3 = Color3.fromRGB(132, 128, 255)
+	Title_7.BackgroundTransparency = 1.000
+	Title_7.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	Title_7.BorderSizePixel = 0
+	Title_7.Position = UDim2.new(0.0153451432, 0, 0.0769252777, 0)
+	Title_7.Size = UDim2.new(0.425704777, 0, 0.882164001, 0)
+	Title_7.Font = Enum.Font.SourceSansBold
+	Title_7.Text = "PLATFORM"
+	Title_7.TextColor3 = Color3.fromRGB(72, 0, 255)
+	Title_7.TextScaled = true
+	Title_7.TextSize = 14.000
+	Title_7.TextWrapped = true
+
+	Stop_5.Name = "Stop"
+	Stop_5.Parent = Platform
+	Stop_5.BackgroundColor3 = Color3.fromRGB(132, 128, 255)
+	Stop_5.BorderColor3 = Color3.fromRGB(202, 0, 0)
+	Stop_5.BorderSizePixel = 3
+	Stop_5.Position = UDim2.new(0.782609344, 0, 0.324867845, 0)
+	Stop_5.Size = UDim2.new(0.185666472, 0, 0.424745411, 0)
+	Stop_5.Font = Enum.Font.Arcade
+	Stop_5.Text = "STOP"
+	Stop_5.TextColor3 = Color3.fromRGB(255, 0, 0)
+	Stop_5.TextScaled = true
+	Stop_5.TextSize = 14.000
+	Stop_5.TextWrapped = true
+
 	-- Scripts:
 
-	local function WFCRDYP_fake_script() -- Frame.Dragify 
+	local function MOLPZ_fake_script() -- Frame.Dragify 
 		local script = Instance.new('LocalScript', Frame)
 
 		local userInputService : UserInputService = game:GetService("UserInputService") -- UserInputService
@@ -438,7 +494,8 @@ local function CreateGUI()
 
 
 	end
-	coroutine.wrap(WFCRDYP_fake_script)()
+	coroutine.wrap(MOLPZ_fake_script)()
+
 
 
 	return FunnyTools
@@ -823,7 +880,7 @@ function SetUpPlayerDetection(PlayerAdded)
 	end)
 end
 
-Players.PlayerAdded:Connect(SetUpPlayerDetection())
+Players.PlayerAdded:Connect(SetUpPlayerDetection)
 
 --Setup
 
@@ -872,6 +929,24 @@ local function CreateStaircaseUpwards(Stairs)
 		NewStair.Parent = Staircases
 		task.wait(0.01)
 	end
+end
+
+local function CreatePlatform()
+	if Platform then
+		Platform:Destroy()
+	end
+	local NewPlatform = Instance.new("Part")
+	NewPlatform.Size = Vector3.new(2048,3,2048)
+	NewPlatform.Anchored = true
+	NewPlatform.CanCollide = true
+	NewPlatform.Transparency = 0.6
+	NewPlatform.Material = Enum.Material.ForceField
+	NewPlatform.Color = Color3.fromRGB(152, 67, 255)
+	NewPlatform.CastShadow = false
+	
+	NewPlatform.CFrame = Player.Character.HumanoidRootPart.CFrame - Vector3.new(0,6,0)
+	NewPlatform.Parent = workspace
+	Platform = NewPlatform
 end
 
 local function RefreshPlayerSpawn()
@@ -1052,6 +1127,15 @@ UIFrame.Freecam.Stop.MouseButton1Click:Connect(function()
 	ToggleFreecam(false)
 end)
 
+UIFrame.Platform.Run.MouseButton1Click:Connect(function()
+	CreatePlatform()
+end)
+
+UIFrame.Platform.Stop.MouseButton1Click:Connect(function()
+	if Platform then
+		Platform:Destroy()
+	end
+end)
 
 --Mouse
 
