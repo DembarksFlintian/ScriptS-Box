@@ -4,21 +4,24 @@ local Character = Player.Character or Player.CharacterAdded:Wait()
 local HumanoidRootPart = Character:WaitForChild("HumanoidRootPart")
 
 local StaircaseItem = Instance.new("Part")
-StaircaseItem.Color = Color3.fromRGB(255, 0, 0)
-StaircaseItem.Anchored = true
+StaircaseItem.Transparency = 1
 StaircaseItem.CanCollide = true
-StaircaseItem.Size = Vector3.new(4, 0.887, 2)
+StaircaseItem.Anchored = true
+local Highlight = Instance.new("SelectionBox")
+Highlight.Color3 = Color3.fromRGB(255,0,0)
+Highlight.LineThickness = 0.1
 
 local function CreateStaircaseUpwards(Stairs)
-	--Create a new staircase by making a new stair part forward on the look vector and 0.887 up
-	--Also save a variable for the last stage of the stairs
 
 	local LastStairPos = HumanoidRootPart.Position - Vector3.new(0,4,0)
 	local LookVector = HumanoidRootPart.CFrame.LookVector
+	local Orientation = HumanoidRootPart.Orientation
 	for i = 1, Stairs do
 		local NewStair = StaircaseItem:Clone()
 		NewStair.Position = LastStairPos + (LookVector * 2) + Vector3.new(0, StaircaseItem.Size.Y, 0)
+		NewStair.Orientation = Orientation
 		LastStairPos = NewStair.Position
+		Highlight.Parent = NewStair
 		NewStair.Parent = workspace
 	end
 end
