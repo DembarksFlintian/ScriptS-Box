@@ -897,6 +897,8 @@ local function Setup()
 			SetUpPlayerDetection(v)
 		end
 	end
+
+	print("newer!")
 end
 
 wait(0.5)
