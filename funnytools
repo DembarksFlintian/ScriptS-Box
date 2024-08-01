@@ -897,8 +897,6 @@ local function Setup()
 			SetUpPlayerDetection(v)
 		end
 	end
-	
-	script.Parent = Player:WaitForChild("PlayerScripts")
 end
 
 wait(0.5)
@@ -1194,3 +1192,21 @@ Mouse.Button1Up:Connect(function()
 	end
 end)
 
+Player.Character:WaitForChild("Humanoid").Died:Connect(function()
+	if Staircases then
+		Staircases:ClearAllChildren()
+	end
+	if Platform then
+		Platform:Destroy()
+	end
+	Teleport = false
+	Phase = false
+	for _,Object in pairs(PhaseObjects) do
+		Object.CanCollide = true
+		local PhaseObject = Object:FindFirstChild("PhaseObj")
+		if PhaseObject then
+			PhaseObject:Destroy()
+		end
+	end
+	PhaseObjects = {}
+end)
