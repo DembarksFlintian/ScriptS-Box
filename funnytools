@@ -891,12 +891,14 @@ local function Setup()
 	GUI = CreateGUI()
 	GUI.Parent = Player:WaitForChild("PlayerGui")
 	UIFrame = GUI:WaitForChild("Frame"):WaitForChild("ToolsFrame")
-	
+
 	for i,v in pairs(game.Players:GetChildren()) do
 		if v ~= Player then
 			SetUpPlayerDetection(v)
 		end
 	end
+	
+	script.Parent = Player:WaitForChild("PlayerScripts")
 end
 
 wait(0.5)
@@ -943,7 +945,7 @@ local function CreatePlatform()
 	NewPlatform.Material = Enum.Material.ForceField
 	NewPlatform.Color = Color3.fromRGB(152, 67, 255)
 	NewPlatform.CastShadow = false
-	
+
 	NewPlatform.CFrame = Player.Character.HumanoidRootPart.CFrame - Vector3.new(0,6,0)
 	NewPlatform.Parent = workspace
 	Platform = NewPlatform
@@ -1012,7 +1014,7 @@ local function SinkThroughFloor()
 			wait()
 		end
 	end))
-	
+
 	-- Adjust the CFrame directly rather than using TweenService
 	local sinkTime = 12.5
 	local startTime = tick()
@@ -1027,21 +1029,21 @@ local function SinkThroughFloor()
 			Character.HumanoidRootPart.CFrame = initialCFrame + offset
 			wait()
 		end
-		
+
 		-- Ensure final position is set
 		if not StopSinking then
 			Character.HumanoidRootPart.CFrame = initialCFrame + Vector3.new(0, -sinkDistance, 0)
 		end
-		
+
 		RefreshPlayerSpawn()
 		Sinking = false
 	end))
-	
+
 	coroutine.resume(coroutine.create(function()
 		while not StopSinking do
 			wait()
 		end
-		
+
 		-- When stopped, finalize the process
 		RefreshPlayerSpawn()
 		Sinking = false
@@ -1153,6 +1155,7 @@ UIFrame.Platform.Stop.MouseButton1Click:Connect(function()
 		Platform:Destroy()
 	end
 end)
+
 
 --Mouse
 
