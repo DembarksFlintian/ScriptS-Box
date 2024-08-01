@@ -13,6 +13,8 @@ HighlightObject.Name = "Highlight"
 HighlightObject.LineThickness = 0.075
 HighlightObject.Color3 = Color3.fromRGB(183, 2, 255)
 
+local Teleport = false
+
 local Phase = false
 local PhaseObjects = {}
 
@@ -31,17 +33,20 @@ local function CreateGUI()
 	local Title = Instance.new("TextLabel")
 	local Close = Instance.new("TextButton")
 	local ToolsFrame = Instance.new("ScrollingFrame")
+	local Staircase = Instance.new("Frame")
+	local Run = Instance.new("TextButton")
+	local Iterations = Instance.new("TextBox")
+	local Title_2 = Instance.new("TextLabel")
+	local Clear = Instance.new("TextButton")
 	local UIListLayout = Instance.new("UIListLayout")
 	local Click2Phase = Instance.new("Frame")
-	local Run = Instance.new("TextButton")
-	local Title_2 = Instance.new("TextLabel")
-	local Stop = Instance.new("TextButton")
-	local Staircase = Instance.new("Frame")
-	local Clear = Instance.new("TextButton")
-	local Title_3 = Instance.new("TextLabel")
-	local Iterations = Instance.new("TextBox")
 	local Run_2 = Instance.new("TextButton")
-	local UIAspectRatioConstraint = Instance.new("UIAspectRatioConstraint")
+	local Title_3 = Instance.new("TextLabel")
+	local Stop = Instance.new("TextButton")
+	local Click2Teleport = Instance.new("Frame")
+	local Run_3 = Instance.new("TextButton")
+	local Title_4 = Instance.new("TextLabel")
+	local Stop_2 = Instance.new("TextButton")
 
 	--Properties:
 
@@ -96,19 +101,16 @@ local function CreateGUI()
 	ToolsFrame.Size = UDim2.new(0.955334961, 0, 0.745222628, 0)
 	ToolsFrame.ScrollBarThickness = 6
 
-	UIListLayout.Parent = ToolsFrame
-	UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
-
-	Click2Phase.Name = "Click2Phase"
-	Click2Phase.Parent = ToolsFrame
-	Click2Phase.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	Click2Phase.BackgroundTransparency = 0.960
-	Click2Phase.BorderColor3 = Color3.fromRGB(0, 0, 0)
-	Click2Phase.BorderSizePixel = 0
-	Click2Phase.Size = UDim2.new(0.992207766, 0, 0.0872234479, 0)
+	Staircase.Name = "Staircase"
+	Staircase.Parent = ToolsFrame
+	Staircase.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	Staircase.BackgroundTransparency = 0.960
+	Staircase.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	Staircase.BorderSizePixel = 0
+	Staircase.Size = UDim2.new(0.992207766, 0, 0.0872234479, 0)
 
 	Run.Name = "Run"
-	Run.Parent = Click2Phase
+	Run.Parent = Staircase
 	Run.BackgroundColor3 = Color3.fromRGB(132, 128, 255)
 	Run.BorderColor3 = Color3.fromRGB(77, 39, 202)
 	Run.BorderSizePixel = 3
@@ -120,72 +122,6 @@ local function CreateGUI()
 	Run.TextScaled = true
 	Run.TextSize = 14.000
 	Run.TextWrapped = true
-
-	Title_2.Name = "Title"
-	Title_2.Parent = Click2Phase
-	Title_2.BackgroundColor3 = Color3.fromRGB(132, 128, 255)
-	Title_2.BackgroundTransparency = 1.000
-	Title_2.BorderColor3 = Color3.fromRGB(0, 0, 0)
-	Title_2.BorderSizePixel = 0
-	Title_2.Position = UDim2.new(0.0153452689, 0, 0.0769248381, 0)
-	Title_2.Size = UDim2.new(0.336397767, 0, 0.882163942, 0)
-	Title_2.Font = Enum.Font.SourceSansBold
-	Title_2.Text = "CLICK2PHASE"
-	Title_2.TextColor3 = Color3.fromRGB(72, 0, 255)
-	Title_2.TextScaled = true
-	Title_2.TextSize = 14.000
-	Title_2.TextWrapped = true
-
-	Stop.Name = "Stop"
-	Stop.Parent = Click2Phase
-	Stop.BackgroundColor3 = Color3.fromRGB(132, 128, 255)
-	Stop.BorderColor3 = Color3.fromRGB(202, 0, 0)
-	Stop.BorderSizePixel = 3
-	Stop.Position = UDim2.new(0.782609344, 0, 0.324867845, 0)
-	Stop.Size = UDim2.new(0.185666472, 0, 0.424745411, 0)
-	Stop.Font = Enum.Font.Arcade
-	Stop.Text = "STOP"
-	Stop.TextColor3 = Color3.fromRGB(255, 0, 0)
-	Stop.TextScaled = true
-	Stop.TextSize = 14.000
-	Stop.TextWrapped = true
-
-	Staircase.Name = "Staircase"
-	Staircase.Parent = ToolsFrame
-	Staircase.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	Staircase.BackgroundTransparency = 0.960
-	Staircase.BorderColor3 = Color3.fromRGB(0, 0, 0)
-	Staircase.BorderSizePixel = 0
-	Staircase.Size = UDim2.new(0.992207766, 0, 0.0872234479, 0)
-
-	Clear.Name = "Clear"
-	Clear.Parent = Staircase
-	Clear.BackgroundColor3 = Color3.fromRGB(132, 128, 255)
-	Clear.BorderColor3 = Color3.fromRGB(202, 0, 0)
-	Clear.BorderSizePixel = 3
-	Clear.Position = UDim2.new(0.782609344, 0, 0.324867845, 0)
-	Clear.Size = UDim2.new(0.185666472, 0, 0.424745411, 0)
-	Clear.Font = Enum.Font.Arcade
-	Clear.Text = "CLEAR"
-	Clear.TextColor3 = Color3.fromRGB(255, 0, 0)
-	Clear.TextScaled = true
-	Clear.TextSize = 14.000
-	Clear.TextWrapped = true
-
-	Title_3.Name = "Title"
-	Title_3.Parent = Staircase
-	Title_3.BackgroundColor3 = Color3.fromRGB(132, 128, 255)
-	Title_3.BackgroundTransparency = 1.000
-	Title_3.BorderColor3 = Color3.fromRGB(0, 0, 0)
-	Title_3.BorderSizePixel = 0
-	Title_3.Position = UDim2.new(0.0153452689, 0, 0.0769248381, 0)
-	Title_3.Size = UDim2.new(0.336397767, 0, 0.882163942, 0)
-	Title_3.Font = Enum.Font.SourceSansBold
-	Title_3.Text = "STAIRCASE"
-	Title_3.TextColor3 = Color3.fromRGB(72, 0, 255)
-	Title_3.TextScaled = true
-	Title_3.TextSize = 14.000
-	Title_3.TextWrapped = true
 
 	Iterations.Name = "Iterations"
 	Iterations.Parent = Staircase
@@ -202,8 +138,48 @@ local function CreateGUI()
 	Iterations.TextSize = 14.000
 	Iterations.TextWrapped = true
 
+	Title_2.Name = "Title"
+	Title_2.Parent = Staircase
+	Title_2.BackgroundColor3 = Color3.fromRGB(132, 128, 255)
+	Title_2.BackgroundTransparency = 1.000
+	Title_2.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	Title_2.BorderSizePixel = 0
+	Title_2.Position = UDim2.new(0.0153452689, 0, 0.0769248381, 0)
+	Title_2.Size = UDim2.new(0.336397767, 0, 0.882163942, 0)
+	Title_2.Font = Enum.Font.SourceSansBold
+	Title_2.Text = "STAIRCASE"
+	Title_2.TextColor3 = Color3.fromRGB(72, 0, 255)
+	Title_2.TextScaled = true
+	Title_2.TextSize = 14.000
+	Title_2.TextWrapped = true
+
+	Clear.Name = "Clear"
+	Clear.Parent = Staircase
+	Clear.BackgroundColor3 = Color3.fromRGB(132, 128, 255)
+	Clear.BorderColor3 = Color3.fromRGB(202, 0, 0)
+	Clear.BorderSizePixel = 3
+	Clear.Position = UDim2.new(0.782609344, 0, 0.324867845, 0)
+	Clear.Size = UDim2.new(0.185666472, 0, 0.424745411, 0)
+	Clear.Font = Enum.Font.Arcade
+	Clear.Text = "CLEAR"
+	Clear.TextColor3 = Color3.fromRGB(255, 0, 0)
+	Clear.TextScaled = true
+	Clear.TextSize = 14.000
+	Clear.TextWrapped = true
+
+	UIListLayout.Parent = ToolsFrame
+	UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
+
+	Click2Phase.Name = "Click2Phase"
+	Click2Phase.Parent = ToolsFrame
+	Click2Phase.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	Click2Phase.BackgroundTransparency = 0.960
+	Click2Phase.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	Click2Phase.BorderSizePixel = 0
+	Click2Phase.Size = UDim2.new(0.992207766, 0, 0.0872234479, 0)
+
 	Run_2.Name = "Run"
-	Run_2.Parent = Staircase
+	Run_2.Parent = Click2Phase
 	Run_2.BackgroundColor3 = Color3.fromRGB(132, 128, 255)
 	Run_2.BorderColor3 = Color3.fromRGB(77, 39, 202)
 	Run_2.BorderSizePixel = 3
@@ -216,12 +192,89 @@ local function CreateGUI()
 	Run_2.TextSize = 14.000
 	Run_2.TextWrapped = true
 
-	UIAspectRatioConstraint.Parent = Frame
-	UIAspectRatioConstraint.AspectRatio = 1.280
+	Title_3.Name = "Title"
+	Title_3.Parent = Click2Phase
+	Title_3.BackgroundColor3 = Color3.fromRGB(132, 128, 255)
+	Title_3.BackgroundTransparency = 1.000
+	Title_3.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	Title_3.BorderSizePixel = 0
+	Title_3.Position = UDim2.new(0.0153452689, 0, 0.0769248381, 0)
+	Title_3.Size = UDim2.new(0.336397767, 0, 0.882163942, 0)
+	Title_3.Font = Enum.Font.SourceSansBold
+	Title_3.Text = "CLICK2PHASE"
+	Title_3.TextColor3 = Color3.fromRGB(72, 0, 255)
+	Title_3.TextScaled = true
+	Title_3.TextSize = 14.000
+	Title_3.TextWrapped = true
+
+	Stop.Name = "Stop"
+	Stop.Parent = Click2Phase
+	Stop.BackgroundColor3 = Color3.fromRGB(132, 128, 255)
+	Stop.BorderColor3 = Color3.fromRGB(202, 0, 0)
+	Stop.BorderSizePixel = 3
+	Stop.Position = UDim2.new(0.782609344, 0, 0.324867845, 0)
+	Stop.Size = UDim2.new(0.185666472, 0, 0.424745411, 0)
+	Stop.Font = Enum.Font.Arcade
+	Stop.Text = "STOP"
+	Stop.TextColor3 = Color3.fromRGB(255, 0, 0)
+	Stop.TextScaled = true
+	Stop.TextSize = 14.000
+	Stop.TextWrapped = true
+
+	Click2Teleport.Name = "Click2Teleport"
+	Click2Teleport.Parent = ToolsFrame
+	Click2Teleport.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	Click2Teleport.BackgroundTransparency = 0.960
+	Click2Teleport.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	Click2Teleport.BorderSizePixel = 0
+	Click2Teleport.Size = UDim2.new(0.992207766, 0, 0.0872234479, 0)
+
+	Run_3.Name = "Run"
+	Run_3.Parent = Click2Teleport
+	Run_3.BackgroundColor3 = Color3.fromRGB(132, 128, 255)
+	Run_3.BorderColor3 = Color3.fromRGB(77, 39, 202)
+	Run_3.BorderSizePixel = 3
+	Run_3.Position = UDim2.new(0.621483982, 0, 0.324867845, 0)
+	Run_3.Size = UDim2.new(0.135549247, 0, 0.424745411, 0)
+	Run_3.Font = Enum.Font.Arcade
+	Run_3.Text = "RUN"
+	Run_3.TextColor3 = Color3.fromRGB(43, 0, 255)
+	Run_3.TextScaled = true
+	Run_3.TextSize = 14.000
+	Run_3.TextWrapped = true
+
+	Title_4.Name = "Title"
+	Title_4.Parent = Click2Teleport
+	Title_4.BackgroundColor3 = Color3.fromRGB(132, 128, 255)
+	Title_4.BackgroundTransparency = 1.000
+	Title_4.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	Title_4.BorderSizePixel = 0
+	Title_4.Position = UDim2.new(0.0153451432, 0, 0.0769252777, 0)
+	Title_4.Size = UDim2.new(0.425704777, 0, 0.882164001, 0)
+	Title_4.Font = Enum.Font.SourceSansBold
+	Title_4.Text = "CLICK2TELEPORT"
+	Title_4.TextColor3 = Color3.fromRGB(72, 0, 255)
+	Title_4.TextScaled = true
+	Title_4.TextSize = 14.000
+	Title_4.TextWrapped = true
+
+	Stop_2.Name = "Stop"
+	Stop_2.Parent = Click2Teleport
+	Stop_2.BackgroundColor3 = Color3.fromRGB(132, 128, 255)
+	Stop_2.BorderColor3 = Color3.fromRGB(202, 0, 0)
+	Stop_2.BorderSizePixel = 3
+	Stop_2.Position = UDim2.new(0.782609344, 0, 0.324867845, 0)
+	Stop_2.Size = UDim2.new(0.185666472, 0, 0.424745411, 0)
+	Stop_2.Font = Enum.Font.Arcade
+	Stop_2.Text = "STOP"
+	Stop_2.TextColor3 = Color3.fromRGB(255, 0, 0)
+	Stop_2.TextScaled = true
+	Stop_2.TextSize = 14.000
+	Stop_2.TextWrapped = true
 
 	-- Scripts:
 
-	local function IOTDJ_fake_script() -- Frame.Dragify 
+	local function SFZAKR_fake_script() -- Frame.Dragify 
 		local script = Instance.new('LocalScript', Frame)
 
 		local userInputService : UserInputService = game:GetService("UserInputService") -- UserInputService
@@ -270,7 +323,8 @@ local function CreateGUI()
 
 
 	end
-	coroutine.wrap(IOTDJ_fake_script)()
+	coroutine.wrap(SFZAKR_fake_script)()
+
 
 	return FunnyTools
 end
@@ -295,7 +349,7 @@ local function CreateStaircaseUpwards(Stairs)
 	if Stairs > 200 then return end
 	local Character = Player.Character or Player.CharacterAdded:Wait()
 	local HumanoidRootPart = Character:WaitForChild("HumanoidRootPart")
-	
+
 	local StaircaseItem = Instance.new("Part")
 	StaircaseItem.Transparency = 1
 	StaircaseItem.CanCollide = true
@@ -320,7 +374,8 @@ end
 --GUI Connections
 
 GUI.Frame.Close.MouseButton1Click:Connect(function()
-	script.Parent:Destroy()
+	GUI:Destroy()
+	script:Destroy()
 end)
 
 UIFrame.Staircase.Run.MouseButton1Click:Connect(function()
@@ -337,6 +392,7 @@ UIFrame.Staircase.Clear.MouseButton1Click:Connect(function()
 end)
 
 UIFrame.Click2Phase.Run.MouseButton1Click:Connect(function()
+	if Teleport	then return end
 	Phase = true
 end)
 UIFrame.Click2Phase.Stop.MouseButton1Click:Connect(function()
@@ -351,15 +407,26 @@ UIFrame.Click2Phase.Stop.MouseButton1Click:Connect(function()
 	PhaseObjects = {}
 end)
 
+UIFrame.Click2Teleport.Run.MouseButton1Click:Connect(function()
+	if Phase then return end
+	Teleport = true
+end)
+UIFrame.Click2Teleport.Stop.MouseButton1Click:Connect(function()
+	Teleport = false
+end)
+
 --Mouse
 
 Mouse.Button1Up:Connect(function()
 	if Mouse.Target then
 		local Target = Mouse.Target
-		if not Target:IsA("BasePart") or Target.Name == "Baseplate" then
+		if not Target:IsA("BasePart") then
 			return
 		end
 		if Phase then
+			if Target.Name == "Baseplate" then
+				return
+			end
 			if Target.CanCollide == true then
 				Target.CanCollide = false
 				local PhaseObject = HighlightObject:Clone()
@@ -374,6 +441,12 @@ Mouse.Button1Up:Connect(function()
 					PhaseObject:Destroy()
 				end
 				table.remove(PhaseObjects, table.find(PhaseObjects, Target))
+			end
+		elseif Teleport then
+			local Location = Mouse.Hit.Position
+			local Root = Player.Character:FindFirstChild("HumanoidRootPart")
+			if Root then
+				Player.Character:MoveTo(Location)
 			end
 		end
 	end
