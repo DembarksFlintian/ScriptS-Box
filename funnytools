@@ -1194,7 +1194,7 @@ UIFrame.Emote.Run.MouseButton1Click:Connect(function()
 	if not tonumber(Amt.Text) then
 		return
 	end
-	PlayEmote(Amt)
+	PlayEmote(Amt.Text)
 end)
 UIFrame.Emote.Stop.MouseButton1Click:Connect(function()
 	Player.Character.Animate.Disabled = false
