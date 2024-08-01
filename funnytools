@@ -1012,23 +1012,40 @@ local function SinkThroughFloor()
 			wait()
 		end
 	end))
-	SinkTween = TweenService:Create(Character.HumanoidRootPart, TweenInfo.new(12.5), {CFrame = Character.HumanoidRootPart.CFrame + Vector3.new(0,-10,0)})
-	-- Add a check to stop the tween if StopSinking becomes true
+	
+	-- Adjust the CFrame directly rather than using TweenService
+	local sinkTime = 12.5
+	local startTime = tick()
+	local sinkDistance = 10
+	local initialCFrame = Character.HumanoidRootPart.CFrame
+	
 	coroutine.resume(coroutine.create(function()
-		while not StopSinking do
+		while tick() - startTime < sinkTime and not StopSinking do
+			local elapsed = tick() - startTime
+			local progress = elapsed / sinkTime
+			local offset = Vector3.new(0, -sinkDistance * progress, 0)
+			Character.HumanoidRootPart.CFrame = initialCFrame + offset
 			wait()
 		end
-		if SinkTween then
-			SinkTween:Cancel()
-			SinkTween = nil
+		
+		-- Ensure final position is set
+		if not StopSinking then
+			Character.HumanoidRootPart.CFrame = initialCFrame + Vector3.new(0, -sinkDistance, 0)
 		end
+		
 		RefreshPlayerSpawn()
 		Sinking = false
 	end))
 	
-	SinkTween:Play()
-	SinkTween.Completed:Wait()
-	StopSinking = true
+	coroutine.resume(coroutine.create(function()
+		while not StopSinking do
+			wait()
+		end
+		
+		-- When stopped, finalize the process
+		RefreshPlayerSpawn()
+		Sinking = false
+	end))
 end
 
 local freecamEnabled = false
